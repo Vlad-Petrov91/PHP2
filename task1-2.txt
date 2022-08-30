@@ -1,0 +1,15 @@
+Точкой входа в приложение является index.php где инициализируется объект Kernel он является Front controller 
+При выполнении скрипта создается $request в который записывается запрос методом класса Request::createFromGlobals() 
+Затем создается объект класса ContainerBuilder и передается в статический метод addContainer класса Registry
+При выполнении скрипта создается объект Kernel
+$response = (new Kernel($containerBuilder))->handle($request);
+Куда передаются request и containerBuilder после у response вызывается метод $response->send();
+Front controller Kernel взаимодействует с Request::createFromGlobals() и ContainerBuilder
+
+
+Как я понял паттерн Registry реализуется в фреймворке Symphony компонентом DependencyInjection\ContainerBuilder
+Паттерн Registry реализуется в файле app/framework/Registry.php
+он был применен для получения информации о пользователе на всех уровнях приложения и передачи данных между модулями не используя глобальные переменные
+
+
+
